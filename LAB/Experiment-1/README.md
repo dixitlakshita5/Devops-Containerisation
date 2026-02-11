@@ -21,10 +21,13 @@ To understand the conceptual and practical differences between Virtual Machines 
 
 1. Install Docker Desktop for Mac,
 Docker Desktop was downloaded and installed from the official Docker website.
+
 Since macOS supports Docker natively, WSL is not required.
  ![Docker Installation](images/dockerInstallation.png)
 2. Open Docker Desktop Application on your Mac from selecting it from applications.
 ![Openn Docker Desktop](images/OpenDockerDesktop.png)
 3. Verify your Docker installation by runnung the command _docker --version_.
+
+You can see _Containers : 3_ in the output and also the _docker version_.
 ![VerifyInstallation](images/VerifyInstallation.png)
 
