@@ -1,3 +1,8 @@
 # Devops-Containerisation
 
-This repository consists of all the Lab experiments of Conatainerisation and Devops
+This repository consists of all the Lab experiments of Containerisation and DevOps.
+
+## Lab Experiments
+
+- [Experiment 1](Lab/Experiment-1/README.md)
+- [Experiment 2](Lab/Experiment-2/README.md)
