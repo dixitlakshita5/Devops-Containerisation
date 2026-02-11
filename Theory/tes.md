@@ -1,3 +1,8 @@
+
+
+ # Devops
+
+
 notes -containers are made on terminal
 -docker is run with root privilege / shared kernel
 -sudo is written to give access/ rootaccess
