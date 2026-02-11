@@ -26,5 +26,5 @@ Since macOS supports Docker natively, WSL is not required.
 2. Open Docker Desktop Application on your Mac from selecting it from applications.
 ![Openn Docker Desktop](images/OpenDockerDesktop.png)
 3. Verify your Docker installation by runnung the command _docker --version_.
-![VerifyInstallation](images/dockerInstallation.png)
+![VerifyInstallation](images/VerifyInstallation.png)
 
