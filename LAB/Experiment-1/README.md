@@ -36,6 +36,15 @@ You can see _Containers : 3_ in the output and also the _docker version_.
 4. Command : _docker pull nginx_. This downloads the official Nginx image from Docker Hub.
 ![PullNgnix](images/pullngnix.png)
 
+#### Run Nginx Container
+
+5. Command : _docker run -d -p 8080:80 --name nginx-container nginx_<br>
+- `-d` → Run in detached mode  
+- `-p 8080:80` → Map port 8080 (host) to port 80 (container)  
+- `--name nginx-container` → Container name  
+- `nginx` → Image name
+![runngnix](images/runngnix.png)
+
 
 ## TERMINOLOGIES 
 
