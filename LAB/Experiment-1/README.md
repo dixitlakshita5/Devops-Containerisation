@@ -19,6 +19,8 @@ To understand the conceptual and practical differences between Virtual Machines 
 
 ### Steps - _All the Steps are for Mac Users_
 
+#### Docker Setup
+
 1. Install Docker Desktop for Mac,
 Docker Desktop was downloaded and installed from the official Docker website.<br>
 Since macOS supports Docker natively, WSL is not required.
@@ -28,4 +30,18 @@ Since macOS supports Docker natively, WSL is not required.
 3. Verify your Docker installation by runnung the command _docker --version_.<br>
 You can see _Containers : 3_ in the output and also the _docker version_.
 ![VerifyInstallation](images/VerifyInstallation.png)
+
+#### Pull Nginx Image
+
+4. Command : _docker pull nginx_. This downloads the official Nginx image from Docker Hub.
+![PullNgnix](images/pullngnix.png)
+
+
+## TERMINOLOGIES 
+
+1. What is ngnix ? <br>
+   ngnix is a software 
+   
+
+
 
