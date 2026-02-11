@@ -16,7 +16,7 @@ University of Petroleum and Energy Studies, Dehradun
 To install and configure Docker, pull Docker images, run containers, and manage the container lifecycle using Docker commands.
 
 ---
-
+![](./images/)
 ## Objectives
 
 - To pull Docker images from Docker Hub  
