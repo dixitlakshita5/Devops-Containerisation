@@ -27,18 +27,18 @@ Since macOS supports Docker natively, WSL is not required.
  ![Docker Installation](images/dockerInstallation.png)
 2. Open Docker Desktop Application on your Mac from selecting it from applications.
 ![Openn Docker Desktop](images/OpenDockerDesktop.png)
-3. Verify your Docker installation by runnung the command _docker --version_.<br>
-You can see _Containers : 3_ in the output and also the _docker version_.
+3. Verify your Docker installation by running the command `_docker --version_`<br>
+You can see _Containers : 3_ in the output and also the `docker version`.
 ![VerifyInstallation](images/VerifyInstallation.png)
 
 #### Pull Nginx Image
 
-4. Command : _docker pull nginx_. This downloads the official Nginx image from Docker Hub.
+4. Command : `docker pull nginx_` This downloads the official Nginx image from Docker Hub.
 ![PullNgnix](images/pullngnix.png)
 
 #### Run Nginx Container
 
-5. Command : _docker run -d -p 8080:80 --name nginx-container nginx_<br>
+5. Command : `docker run -d -p 8080:80 --name nginx-container nginx`<br>
 - `-d` → Run in detached mode  
 - `-p 8080:80` → Map port 8080 (host) to port 80 (container)  
 - `--name nginx-container` → Container name  
