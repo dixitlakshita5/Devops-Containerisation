@@ -6,7 +6,7 @@ University of Petroleum and Energy Studies, Dehradun
 
 ---
 
-# EXPERIMENT – 2  
+## EXPERIMENT – 2  
 ## Docker Installation, Configuration, and Running Images
 
 ---
@@ -16,7 +16,7 @@ University of Petroleum and Energy Studies, Dehradun
 To install and configure Docker, pull Docker images, run containers, and manage the container lifecycle using Docker commands.
 
 ---
-![](./images/)
+
 ## Objectives
 
 - To pull Docker images from Docker Hub  
@@ -50,10 +50,42 @@ Containers are lightweight because they share the host operating system kernel, 
 
 ---
 
-# Procedure / Steps to Perform the Experiment
+## Procedure / Steps to Perform the Experiment
 
----
 
-## Step 1: Pull Docker Image
+### 1. Pull Image
+
+```bash docker pull nginx```
+![pull](images/pullngnix.png)
+
+### 2. Run Container with port mapping
+
+```bash docker run -d -p 8080:80 nginx```
+![run](images/runngnix.png)
+
+### 3. Verify Running Containers 
+
+```bash docker ps```
+![dockerps](images/dockerps.png)
+
+- So our container id from here is : _*a64448d2b3f6*_.
+- We can use the first four initials to operate through container id.
+
+### 4. Stop and Remove Container id
+
+```bash 
+docker stop <container_id>
+docker rm <container_id>
+```
+
+![dockerrm](images/dockerrm.png)
+
+- We can verify it by `docker ps` and there will be no list of running containers as showed in the screenshot above.
+
+
+
+
+
+
 
 
