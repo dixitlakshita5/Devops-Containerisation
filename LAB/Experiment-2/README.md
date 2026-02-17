@@ -88,6 +88,13 @@ docker rm <container_id>
 
 - We can verify it by `docker ps` and there will be no list of running containers as showed in the screenshot above.
 
+### 5. Remove Image
+```bash
+docker rmi nginx
+```
+![dockerrmi](images/dockerrmi.png)
+
+
 
 
 
