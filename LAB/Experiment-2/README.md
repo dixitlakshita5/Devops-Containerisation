@@ -94,6 +94,10 @@ docker rmi nginx
 ```
 ![dockerrmi](images/dockerrmi.png)
 
+## RESULT 
+
+Docker images were successfully pulled, containers executed, and lifecycle commands performed.
+
 
 
 
