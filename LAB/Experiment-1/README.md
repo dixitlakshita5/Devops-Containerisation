@@ -65,7 +65,7 @@ Containers virtualize at the operating system level. They share the host OS kern
 
 ### Steps - _All the Steps are for Mac Users_
 
-#### Docker Setup
+### Docker Setup
 
 1. Install Docker Desktop for Mac,
 Docker Desktop was downloaded and installed from the official Docker website.<br>
@@ -77,7 +77,7 @@ Since macOS supports Docker natively, WSL is not required.
 You can see _Containers : 3_ in the output and also the `docker version`.
 ![VerifyInstallation](images/VerifyInstallation.png)
 
-#### Pull Ubuntu and Nginx Image
+### Pull Ubuntu and Nginx Image
 
 **UBUNTU IMAGE**
 
@@ -102,7 +102,7 @@ This is a unique cryptographic hash of the image.
 4. Command : `docker pull nginx_` This downloads the official Nginx image from Docker Hub.
 ![PullNgnix](images/pullngnix.png)
 
-#### Run Nginx Container
+### Run Nginx Container
 
 5. Command : `docker run -d -p 8080:80 --name nginx-container nginx`<br>
 - `-d` → Run in detached mode  
@@ -118,7 +118,7 @@ This is a unique cryptographic hash of the image.
 | `docker run ubuntu`  | Creates & starts a container |
 
    
-#### Verify Ngnix in Container 
+### Verify Ngnix in Container 
 
 6. Command : ```bash curl localhost:8080```
 ![curl](images/curl.png)
@@ -143,7 +143,7 @@ This has the same output for the html code that we got earlier.
 ![dockerps](images/verifyngnix.png)
 
 
-#### Resource Utilisation Observation 
+### Resource Utilisation Observation 
 
 **Container Obeservation Command** 
 
