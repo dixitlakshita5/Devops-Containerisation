@@ -55,17 +55,23 @@ Containers are lightweight because they share the host operating system kernel, 
 
 ### 1. Pull Image
 
-```bash docker pull nginx```
+```bash 
+docker pull nginx
+```
 ![pull](images/pullngnix.png)
 
 ### 2. Run Container with port mapping
 
-```bash docker run -d -p 8080:80 nginx```
+```bash 
+docker run -d -p 8080:80 nginx
+```
 ![run](images/runngnix.png)
 
 ### 3. Verify Running Containers 
 
-```bash docker ps```
+```bash 
+docker ps
+```
 ![dockerps](images/dockerps.png)
 
 - So our container id from here is : _*a64448d2b3f6*_.
