@@ -96,6 +96,7 @@ Since no tag was specified, Docker uses the default tag: latest.
 This is a unique cryptographic hash of the image.
 
 
+
 **NGINIX IMAGE**
 
 4. Command : `docker pull nginx_` This downloads the official Nginx image from Docker Hub.
@@ -155,6 +156,13 @@ vm_stat
 ```
 ![container](images/resourceutilisation.png)
 ![macmemory](images/containerobeservationcommand.png)
+
+
+### Challenges 
+
+1. As this is a Mac system the `free -h` did not work and had to find the mac compatible command which is `vm_stat`. 
+2. Difficulty in understanding port mapping of 8080 to the nginx port 80.
+3. Difficulty in performing all VM related operations.
 
 
 
