@@ -77,7 +77,26 @@ Since macOS supports Docker natively, WSL is not required.
 You can see _Containers : 3_ in the output and also the `docker version`.
 ![VerifyInstallation](images/VerifyInstallation.png)
 
-#### Pull Nginx Image
+#### Pull Ubuntu and Nginx Image
+
+**UBUNTU IMAGE**
+
+3. Command : ```bash docker pull ubuntu ```
+This command tells Docker: <br>
+“Download the Ubuntu image from Docker Hub to my local machine.”
+- docker → Docker CLI tool
+- pull → Download an image
+- ubuntu → The image name<br>
+Since no tag was specified, Docker uses the default tag: latest.
+![ubuntuimage](images/ubuntuimage.png)
+
+
+**Meaning of the OUTPUT**
+`Digest: sha256:cd1dba651b3080c3686ecf4e3c4220f026b521fb76978881737d24f200828b2b`
+This is a unique cryptographic hash of the image.
+
+
+**NGINIX IMAGE**
 
 4. Command : `docker pull nginx_` This downloads the official Nginx image from Docker Hub.
 ![PullNgnix](images/pullngnix.png)
@@ -91,11 +110,12 @@ You can see _Containers : 3_ in the output and also the `docker version`.
 - `nginx` → Image name
 ![runngnix](images/runngnix.png)
 
+| Command              | What it does                 |
+| -------------------- | ---------------------------- |
+| `docker pull ubuntu` | Downloads Ubuntu image       |
+| `docker images`      | Shows downloaded images      |
+| `docker run ubuntu`  | Creates & starts a container |
 
-## TERMINOLOGIES 
-
-1. What is ngnix ? <br>
-   ngnix is a software 
    
 
 
