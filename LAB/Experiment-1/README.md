@@ -147,8 +147,8 @@ This has the same output for the html code that we got earlier.
 
 **Container Obeservation Command** 
 
-`docker stats` tells you the memory usage of each container, CPU usage, Network usage, etc. <br>
-`vm_stat` specifically for _MAC_ tells you Memory of macOS system.
+- `docker stats` tells you the memory usage of each container, CPU usage, Network usage, etc. <br>
+- `vm_stat` specifically for _MAC_ tells you Memory of macOS system.
 
 ```bash 
 docker stats
