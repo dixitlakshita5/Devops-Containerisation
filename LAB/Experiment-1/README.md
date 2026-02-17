@@ -119,8 +119,8 @@ This is a unique cryptographic hash of the image.
    
 #### Verify Ngnix in Container 
 
-6. Command : ![curl](curl.png)
-```bash curl localhost:8080```
+6. Command : ```bash curl localhost:8080```
+![curl](images/curl.png)
 
 What this means : <br>
 
