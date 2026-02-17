@@ -117,6 +117,21 @@ This is a unique cryptographic hash of the image.
 | `docker run ubuntu`  | Creates & starts a container |
 
    
+#### Verify Ngnix in Container 
+
+6. Command : ![curl](curl.png)
+```bash curl localhost:8080```
+
+What this means : <br>
+
+- curl : tool to request a web page from terminal
+- localhost : your own computer
+- 8080 : port number
+
+
+
+
+
 
 
 
