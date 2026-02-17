@@ -129,6 +129,39 @@ What this means : <br>
 - 8080 : port number
 
 
+- You can also verify that the Ngnix container is running through checking the docker desktop
+![running](images/ngnixcontaineruning.png)
+
+
+- You can also verify it by checking directly on the web page "http://localhost:8080
+". <br>
+This has the same output for the html code that we got earlier.
+![webpage](images/ngnixwebpage.png)
+
+- You can also verify it using the commad `docker ps` 
+![dockerps](images/verifyngnix.png)
+
+
+#### Resource Utilisation Observation 
+
+**Container Obeservation Command** 
+
+`docker stats` tells you the memory usage of each container, CPU usage, Network usage, etc. <br>
+`vm_stat` specifically for _MAC_ tells you Memory of macOS system.
+
+```bash 
+docker stats
+vm_stat
+```
+![container](images/resourceutilisation.png)
+![macmemory](images/containerobeservationcommand.png)
+
+
+
+
+
+
+
 
 
 
