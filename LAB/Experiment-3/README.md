@@ -261,6 +261,25 @@ docker images | grep nginx
   - Faster pull and startup time
 ![size](images/size.png)
 
+## Image size and Comparison
+
+## Image Size and Comparison Table
+
+| Image Name              | Image ID        | Virtual Size | Actual Size | Notes |
+|--------------------------|----------------|-------------|-------------|-------|
+| nginx-alpine:latest     | 5c460ed1ecac   | 16.7MB      | 5.08MB      | Smallest image (custom Alpine build) |
+| nginx-ubuntu:latest     | 28a6ac785e50   | 187MB       | 50.5MB      | Ubuntu-based custom build |
+| nginx:alpine            | 1d13701a5f9f   | 92.6MB      | 26.7MB      | Official Alpine variant |
+| nginx:latest            | 341bf0f3ce6c   | 258MB       | 64.1MB      | Official Debian-based image (largest) |
+
+### Comparison Summary
+
+- `nginx-alpine:latest` is the smallest due to minimal Alpine base and manual optimization.
+- `nginx-ubuntu:latest` is larger because it includes a full Ubuntu base.
+- `nginx:alpine` is optimized but still larger than the custom Alpine build.
+- `nginx:latest` is the largest as it is Debian-based and includes additional modules and layers.
+
+
 
 ## Insights Gained 
 
