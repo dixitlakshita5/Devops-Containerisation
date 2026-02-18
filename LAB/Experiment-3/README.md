@@ -88,7 +88,7 @@ The tag (version). If you don’t specify a tag, Docker assumes latest.
 docker run -d --name nginx-official -p 8080:80 nginx
 ```
 
-![run](images/runc.png)
+![run](images/runcontainer.png)
 
 ### 3. Verify Running Containers 
 
