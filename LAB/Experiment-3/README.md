@@ -261,7 +261,7 @@ docker images | grep nginx
   - Faster pull and startup time
 ![size](images/size.png)
 
-## Image size and Comparison
+## Part 4 : Image size and Comparison
 
 ## Image Size and Comparison Table
 
@@ -278,6 +278,69 @@ docker images | grep nginx
 - `nginx-ubuntu:latest` is larger because it includes a full Ubuntu base.
 - `nginx:alpine` is optimized but still larger than the custom Alpine build.
 - `nginx:latest` is the largest as it is Debian-based and includes additional modules and layers.
+
+## Part 5 : Inspect Layers
+
+```bash
+docker history nginx
+docker history nginx-ubuntu
+docker history nginx-alpine
+```
+
+![inspect](images/inspect.png)
+
+### Observations:
+
+- Ubuntu has many filesystem layers  
+- Alpine has minimal layers  
+- Official NGINX image is optimized but heavier than Alpine  
+
+## Part 6 : Functional Tasks Using NGINX
+
+### Task 1: Serve Custom HTML Page
+
+1. Create a Folder for HTML
+```bash
+cd ~
+mkdir html
+cd html
+```
+2. Create a Custom HTML File
+
+```bash
+echo "<h1>Hello from Docker NGINX</h1>" > index.html
+```
+
+3. Run NGINX with Volume Mapping
+
+- Go back to home directory
+```bash
+cd ~
+```
+
+```bash
+docker run -d \
+  --name nginx-custom \
+  -p 8083:80 \
+  -v $(pwd)/html:/usr/share/nginx/html \
+  nginx
+```
+![merge](images/merge.png)
+
+
+
+4. Verify
+- Search this on web browser<br>
+`http://localhost:8083`
+
+![browser](images/browser.png)
+
+
+
+
+
+
+
 
 
 
@@ -302,4 +365,4 @@ Docker images were successfully pulled, containers executed, and lifecycle comma
 
 ## Challenges
 - _apk add_ command was not working because I had not built the image yet and I was runnig it on my Mac terminal.
-
+- Custom made image was larger in size then Ubuntu OS image.
