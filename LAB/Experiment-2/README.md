@@ -1,6 +1,7 @@
 # Devops-Containerisation
 
-Name: Lakshita Dixit  
+Name: Lakshita Dixit 
+SAP : 500125823
 School of Computer Science  
 University of Petroleum and Energy Studies, Dehradun  
 
@@ -97,6 +98,10 @@ docker rmi nginx
 ## RESULT 
 
 Docker images were successfully pulled, containers executed, and lifecycle commands performed.
+
+## Challenegs 
+
+- No Challenges or problems as it was almost similar to the previous experiment.
 
 
 
