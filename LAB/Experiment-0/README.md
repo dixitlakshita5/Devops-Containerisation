@@ -6,7 +6,7 @@ School of Computer Science
 University of Petroleum and Energy Studies, Dehradun  
 
 
-## Experiment 0 
+## Experiment 0 - This experiment demonstrates the installation of Docker Desktop on macOS and Git for integrating and managing version-controlled work efficiently as a Mac user.
 
 ### WSL Installation
 
