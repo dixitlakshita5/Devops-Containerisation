@@ -272,7 +272,7 @@ The simple Python Flask application was successfully containerized using Dockerf
 4. Error running container due to unavailable ports.
    - Error response from daemon: ports are not available
    - Because as before 5000 is not available.
-   ![unavailableports](./images/unavailableports)
+   ![unavailableports](./images/unavailableports.png)
 
 
 ## PART 2 : Using dockerignore
