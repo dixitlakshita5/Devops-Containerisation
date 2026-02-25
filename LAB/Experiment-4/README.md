@@ -326,9 +326,302 @@ test_*.py
 
 ![dockignore](./images/dockignore.png)
 
-- Why .dockerignore is Important
+## Conclusion
 
-  - Prevents unnecessary files from being copied.
-  - Reduces image size.
-  - Improves build speed.
-  - Increases security.
+  - The .dockerignore file prevents unnecessary and sensitive files from being included in the Docker image.
+  - It improves build performance, reduces image size, and enhances security.
+
+
+## PART 3 : Building Docker Images
+
+### Step 1 : - Basic Build Command
+
+- Already made in part 1 and part 2 
+
+  - Dockerfile
+  - app.py
+  - requirements.txt
+  - .dockerignore
+
+### Step 2 : Check for image 
+
+- We already have image made in the Part 1
+- RUN `docker images`
+
+![dockerimages](./images/dockerimages.png)
+
+## Step 3: Tagging Images
+
+
+
+- 1. Build with Version
+
+```bash
+docker build -t my-flask-app:1.0 .
+```
+![tag1](./images/tag1.png)
+
+- Now image is:
+
+```text
+my-flask-app:1.0
+```
+
+- 2. Multiple Tags
+
+```bash
+docker build -t my-flask-app:latest -t my-flask-app:1.0 .
+```
+![tag2](./images/tag2.png)
+
+- One image → two tags.
+
+- 3. Tag for Docker Hub
+
+- Docker Hub format:
+
+```text
+username/image-name:tag
+```
+
+![tag3](./images/tag3.png)
+- Example:
+
+```bash
+docker build -t lakshita/my-flask-app:1.0 .
+```
+
+ 
+### Step 3: Viewing Image Details
+
+- 1. List Images
+
+```bash
+docker images
+```
+![listimage](./images/listimage.png)
+
+- Shows:
+
+  - Repository
+  - Tag
+  - Image ID
+  - Created time
+  - Size
+
+- 2. Show Image History
+
+```bash
+docker history my-flask-app
+```
+![history](./images/dockerhistory.png)
+
+- Shows all layers created from Dockerfile instructions.
+
+- Example:
+
+```text
+CMD python app.py
+EXPOSE 5000
+COPY app.py
+RUN pip install
+COPY requirements.txt
+FROM python:3.9-slim
+```
+
+- Each Dockerfile line = one layer.
+
+- 3. - Inspect Image (Advanced)
+
+```bash
+docker inspect my-flask-app
+```
+![inspect](./images/inspect.png)
+- Shows:
+
+  - Metadata
+  - Environment variables
+  - Ports
+  - Working directory
+  - Entry point
+
+- Very detailed JSON output.
+
+## Part 4: Running Containers
+
+### Step 1: Run Container
+
+```bash
+# Run container with port mapping
+docker run -d -p 5001:5000 --name flask-container my-flask-app
+
+
+# Test the application
+curl http://localhost:5000
+
+# View running containers
+docker ps
+
+# View container logs
+docker logs flask-container
+```
+![all](./images/all.png)
+
+
+## Step 2: Manage Containers
+
+```bash
+# Stop container
+docker stop flask-container
+
+# Start stopped container
+docker start flask-container
+
+# Remove container
+docker rm flask-container
+
+# Remove container forcefully
+docker rm -f flask-container
+```
+![remove](./images/remove.png)
+
+## PART 5 : Multi-stage Builds
+
+### Step 1: What is Multi-Stage Build?
+
+  - Multi-stage build means using multiple FROM statements in one Dockerfile.
+  - It allows you to:
+    - Build the application in one stage.
+    - Copy only required files to the final stage.
+    - Discard unnecessary tools.
+  - Result → Smaller and more secure image.
+
+- Problem with Normal Build
+
+- Your current Dockerfile:
+
+```dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY app.py .
+EXPOSE 5000
+CMD ["python", "app.py"]
+```
+
+- Problem:
+
+  - Build tools remain in the final image.
+  - Image size is bigger.
+  - Runs as root user (less secure).
+
+### Step 2 : Multi-Stage Solution
+
+- Create new file:
+
+```bash
+touch Dockerfile.multistage
+```
+
+- Now paste this:
+
+```dockerfile
+# ---------- STAGE 1: Builder ----------
+FROM python:3.9-slim AS builder
+
+WORKDIR /app
+
+# Copy requirements
+COPY requirements.txt .
+
+# Create virtual environment
+RUN python -m venv /opt/venv
+
+# Activate venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+# ---------- STAGE 2: Runtime ----------
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Copy only virtual environment from builder
+COPY --from=builder /opt/venv /opt/venv
+
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy application code
+COPY app.py .
+
+# Create non-root user
+RUN useradd -m -u 1000 appuser
+USER appuser
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+```
+![multistage](./images/all.png)
+
+
+## Step 3: Build and Compare
+
+```bash
+# Build regular image
+docker build -t flask-regular .
+
+![regular](./images/regular.png)
+
+# Build multi-stage image
+docker build -f Dockerfile.multistage -t flask-multistage .
+
+![multi](./images/multi.png)
+
+
+# Compare sizes
+docker images | grep flask-
+```
+![compare](./images/compare.png)
+
+- Expected output:
+
+```text
+flask-regular     ~250MB
+flask-multistage  ~150MB (40% smaller!)
+```
+
+- BUT in this case multistage is slightly larger 
+| Image Name       | Size      |
+| ---------------- | --------- |
+| flask-regular    | **226MB** |
+| flask-multistage | **245MB** |
+
+**WHY?**
+- Still using python:3.9-slim in both stages.
+- A virtual environment (venv) is created inside the container.
+- That venv itself adds extra size.
+- So instead of reducing size, it slightly increased it.
+
+## Observation – Part 5 (Multi-stage Build)
+
+- After building both images and comparing sizes:
+
+```text
+flask-regular:latest     226MB
+flask-multistage:latest  245MB
+```
+
+- It was observed that the multi-stage image was slightly larger than the regular image in this experiment.
+
+- This is because:
+
+  - The same base image was used in both stages.
+  - A virtual environment was created, which increased the size.
+  - No heavy build tools were removed.
+
+- However, multi-stage builds are generally useful in large applications where build dependencies can be excluded from the final runtime image.
