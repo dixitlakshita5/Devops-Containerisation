@@ -625,3 +625,256 @@ flask-multistage:latest  245MB
   - No heavy build tools were removed.
 
 - However, multi-stage builds are generally useful in large applications where build dependencies can be excluded from the final runtime image.
+
+## Part 6: Publishing to Docker Hub
+
+### Step 1: Login to Docker Hub
+
+Login using Docker credentials:
+
+docker login
+
+Enter username and password when prompted.
+
+![image](./images/dockerlogin.png)
+
+---
+
+### Step 2: Tag Image for Docker Hub
+
+Tag the local image with Docker Hub username:
+
+docker tag my-flask-app:latest lakshitadixit5/my-flask-app:1.0
+
+docker tag my-flask-app:latest lakshitadixit5/my-flask-app:latest
+
+Verify images:
+
+docker images
+
+![imagedocker](./images/imagedocker.png)
+
+---
+
+### Step 3: Push Image to Docker Hub
+
+Push version tag:
+
+docker push lakshitadixit5/my-flask-app:1.0
+
+Push latest tag:
+
+docker push lakshitadixit5/my-flask-app:latest
+
+![push](./images/pushimage.png)
+
+---
+
+### Step 4: Pull Image from Docker Hub
+
+Pull image from Docker Hub:
+
+docker pull lakshitadixit5/my-flask-app:latest
+
+![pull](./images/dockerpull.png)
+
+---
+
+### Step 5: Run Container from Pulled Image
+
+Run container with port mapping:
+
+docker run -d -p 5001:5000 --name flask-container lakshitadixit5/my-flask-app:latest
+
+![runcontainer](./images/runcontainer.png)
+---
+
+### Step 6: Verify Running Container
+
+Check running containers:
+
+docker ps
+
+Check logs:
+
+docker logs flask-container
+
+![log](./images/dockerlog.png)
+
+Test application:
+
+curl http://localhost:5001
+
+![curl](./images/curl.png)
+---
+
+## Part 7: Node.js Example
+
+### Step 1: Create Node.js Application
+
+Create project directory:
+
+mkdir my-node-app
+
+cd my-node-app
+
+Create application file:
+
+touch app.js
+
+Add the following code:
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello from Node.js Docker!');
+});
+
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy' });
+});
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
+![build](./images/build.png)
+---
+
+### Step 2: Create package.json
+
+Create file:
+
+touch package.json
+
+Add:
+
+{
+  "name": "node-docker-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+---
+
+### Step 3: Create Dockerfile
+
+Create Dockerfile:
+
+touch Dockerfile
+
+Add:
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+COPY app.js .
+
+EXPOSE 3000
+
+CMD ["node","app.js"]
+
+![step3](./images/step3.png)
+---
+
+### Step 4: Build Docker Image
+
+Build image:
+
+docker build -t my-node-app .
+
+![build](./images/buildfinal.png)
+Verify:
+
+docker images
+
+![img](./images/verifyimg.png)
+
+---
+
+### Step 5: Run Node Container
+
+Run container:
+
+docker run -d -p 3001:3000 --name node-container my-node-app
+
+![runapp](./images/runapp.png)
+
+
+---
+
+### Step 6: Test Application
+
+Test using curl:
+
+curl http://localhost:3001
+
+Test health endpoint:
+
+curl http://localhost:3001/health
+
+![local](./images/local3001.png)
+---
+
+## Observation
+
+### Part 6: Publishing to Docker Hub
+
+1. The Docker image was successfully tagged using the Docker Hub username.
+2. The image was pushed to Docker Hub using the docker push command.
+3. All image layers were uploaded successfully to the remote repository.
+4. The image was pulled successfully using the docker pull command.
+5. The container was executed from the pulled image using docker run.
+6. The application was accessible through the mapped host port.
+7. The docker ps command confirmed the container was running successfully.
+
+---
+
+### Part 7: Node.js Application
+
+1. A Node.js Express application was created successfully.
+2. A Dockerfile was written using the node:18-alpine base image.
+3. Dependencies were installed using npm install inside the container.
+4. The Docker image was successfully built using docker build.
+5. The container was started using docker run with port mapping.
+6. The application responded correctly when tested using curl.
+7. The health endpoint returned the expected JSON response.
+8. Container logs confirmed the Node.js server started successfully.
+
+---
+
+## Result
+
+The Docker images for both Flask and Node.js applications were successfully built, tagged, and executed.  
+The images were successfully pushed to Docker Hub and pulled back to the local system.  
+The applications were accessible through the configured ports, confirming successful containerization and deployment.
+
+---
+
+## Conclusion
+
+The experiment demonstrated how Docker can be used to containerize applications and manage dependencies efficiently. Multi-stage builds helped in understanding optimization techniques, while Docker Hub enabled image sharing and distribution. The experiment also showed how applications built in different programming languages can be containerized and executed consistently across environments. Thus, Docker simplifies application deployment and improves portability.
+
+---
+
+## Challenges Faced
+
+1. Understanding Docker build context and image layers initially.
+2. Port conflicts due to system services already using default ports.
+3. Incorrect tagging caused push failures to Docker Hub.
+4. Repository naming mismatches caused authorization errors.
+5. Containers failed to start when required images were not built.
+6. Debugging port mapping issues between host and container.
+7. Understanding the difference between image creation and container execution.
+
+These challenges were resolved by verifying Docker commands, correcting tags, ensuring proper port mapping, and checking container logs.
