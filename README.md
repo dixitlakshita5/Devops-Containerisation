@@ -17,5 +17,6 @@ This repository consists of all the Lab experiments of Containerisation and DevO
 - [Experiment 3](./LAB/Experiment-3/README.md)
     - To deploy and analyze NGINX using different Docker base images (official, Ubuntu, and Alpine) in order to understand image layers, size differences, performance, security, and real-world containerized use cases.
 - [Experiment 4](./LAB/Experiment-4/README.md)
+    - In this experiment, Docker was used to containerize Flask and Node.js applications using Dockerfiles. Docker images were built, tagged, and published to Docker Hub to demonstrate image distribution. The experiment also demonstrated multi-stage builds, container execution, and port mapping to understand Docker deployment workflow.
 - [Experiment 5](./LAB/Experiment-5/README.md)
 
