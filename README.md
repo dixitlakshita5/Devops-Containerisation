@@ -19,4 +19,5 @@ This repository consists of all the Lab experiments of Containerisation and DevO
 - [Experiment 4](./LAB/Experiment-4/README.md)
     - In this experiment, Docker was used to containerize Flask and Node.js applications using Dockerfiles. Docker images were built, tagged, and published to Docker Hub to demonstrate image distribution. The experiment also demonstrated multi-stage builds, container execution, and port mapping to understand Docker deployment workflow.
 - [Experiment 5](./LAB/Experiment-5/README.md)
+    - To study Docker volumes for persistent storage, environment variables for container configuration, monitoring tools for container performance and Docker networks for communication between containers.
 
