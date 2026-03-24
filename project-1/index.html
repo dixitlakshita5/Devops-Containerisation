@@ -40,7 +40,66 @@ Storage: Docker Named Volume
 
 <h2>Architecture</h2>
 
+<pre>
+
+Client (Browser / Postman)
+
+↓
+
+localhost:3000 (Port Mapping)
+
+↓
+
+Docker Host
+
+↓
+
+Docker Bridge Network
+(172.18.0.0/16)
+
+↓
+
+Backend Container (Node.js + Express)
+
+↓
+
+PostgreSQL Container
+
+↓
+
+Docker Volume (Persistent Storage)
+
+</pre>
+
 <img src="images/images1.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Repository Structure</h2>
+
+<pre>
+
+container-project/
+
+├── backend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── server.js
+│   └── node_modules/
+
+├── database/
+│   ├── Dockerfile
+│   └── init.sql
+
+├── docker-compose.yml
+├── .dockerignore
+└── README.md
+
+</pre>
 
 </div>
 
@@ -187,11 +246,27 @@ docker volume ls
 <h2>Volume Persistence</h2>
 
 <pre>
+
+Step 1 — Insert Data
+
+curl -X POST http://localhost:3000/add
+
+Step 2 — Retrieve Data
+
+curl http://localhost:3000/users
+
+Step 3 — Stop Containers
+
 docker-compose down
+
+Step 4 — Restart Containers
 
 docker-compose up -d
 
+Step 5 — Verify Persistence
+
 curl http://localhost:3000/users
+
 </pre>
 
 <img src="images/images12.png">
