@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Containerized Web Application</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Containerized Web Application with PostgreSQL</h1>
+
+<div class="card">
+
+<h2>Project Overview</h2>
+
+<p>
+This project demonstrates how to design, containerize and deploy a web application using Docker.
+</p>
+
+<p>
+Backend API: Node.js + Express<br>
+Database: PostgreSQL<br>
+Orchestration: Docker Compose<br>
+Networking: Docker Macvlan<br>
+Storage: Docker Named Volume
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Architecture</h2>
+
+<img src="images/images1.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Create Macvlan Network</h2>
+
+<pre>
+docker network create -d macvlan \
+--subnet=192.168.1.0/24 \
+--gateway=192.168.1.1 \
+myymacvlan
+</pre>
+
+<img src="images/images2-i.png">
+
+<img src="images/images2.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Build and Run</h2>
+
+<pre>
+docker-compose up -d
+</pre>
+
+</div>
+
+
+<div class="card">
+
+<h2>Check Running Containers</h2>
+
+<pre>
+docker ps
+</pre>
+
+<img src="images/images3.png">
+
+<img src="images/images4.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Test API</h2>
+
+<pre>
+curl http://localhost:3000/users
+</pre>
+
+<img src="images/images5.png">
+
+<img src="images/images6.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Insert Record</h2>
+
+<pre>
+curl -X POST http://localhost:3000/add \
+-H "Content-Type: application/json"
+-d '{"name": "Lakshita"}'
+</pre>
+
+</div>
+
+
+<div class="card">
+
+<h2>Fetch Users</h2>
+
+<pre>
+curl http://localhost:3000/users
+</pre>
+
+<img src="images/images7.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Verify Containers</h2>
+
+<pre>
+sudo docker ps
+</pre>
+
+<img src="images/images9.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Verify Network</h2>
+
+<pre>
+docker network inspect mymacvlan
+</pre>
+
+<img src="images/images8.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Verify Images</h2>
+
+<pre>
+docker images
+</pre>
+
+<img src="images/images10.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Verify Volumes</h2>
+
+<pre>
+docker volume ls
+</pre>
+
+<img src="images/images11.png">
+
+</div>
+
+
+<div class="card">
+
+<h2>Volume Persistence</h2>
+
+<pre>
+docker-compose down
+
+docker-compose up -d
+
+curl http://localhost:3000/users
+</pre>
+
+<img src="images/images12.png">
+
+<img src="images/images13.png">
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
