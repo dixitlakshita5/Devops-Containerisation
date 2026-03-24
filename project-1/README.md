@@ -335,3 +335,6 @@ docker volume ls
 ![](./images/images12.png)
 ![](./images/images13.png)
 
+## Summary 
+
+This project presents the design, containerization, and deployment of a multi-container web application using Docker and Docker Compose, demonstrating fundamental DevOps and containerization principles. The system consists of a Node.js and Express backend service integrated with a PostgreSQL database, each running in isolated containers to ensure modular architecture and service independence. Docker Compose is utilized for service orchestration and dependency management, while Docker networking enables seamless inter-container communication. Additionally, Docker named volumes are implemented to provide persistent storage, ensuring that database data remains intact across container restarts. The project further validates container functionality through API testing and verification of running containers, networks, images, and volumes, thereby illustrating practical concepts such as container lifecycle management, environment configuration, data persistence, and scalable application deployment within a containerized environment.
