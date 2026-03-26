@@ -15,3 +15,38 @@ The lab also covers debugging and operational skills like intentionally breaking
 ![8082](./images/8082.png)
 ![4](./images/4.png)
 ![5](./images/5.png)
+
+## Challenges Faced During the Experiment
+
+1. **Understanding Pod vs Deployment**
+   - Initially I was confused about why my Pod was not recreated after deletion.
+   - Later I understood that Pods are temporary resources.
+   - Deployment is required for self-healing and automatic Pod recreation.
+
+2. **Pod Not Found Error**
+   - I repeatedly encountered this error:
+
+   Error from server (NotFound): pods "<pod-name>" not found
+
+- This happened because:
+  - I used the wrong Pod name
+  - The Pod was already deleted
+  - Kubernetes created a new Pod with a different name after scaling
+- I learned that I should always check Pod names first using:
+  
+  kubectl get pods
+
+
+3. **Port Forward Command Blocking Terminal**
+- When I ran port forwarding, the terminal appeared stuck.
+- I initially thought the command had failed.
+- Later I understood it runs in the foreground because it maintains a live tunnel.
+
+
+4. **Debugging ImagePullBackOff Error**
+- When I intentionally used the wrong image, the Pod failed.
+- The status showed:
+
+ ImagePullBackOff
+
+
