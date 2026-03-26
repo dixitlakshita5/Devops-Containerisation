@@ -7,7 +7,7 @@
 This repository consists of all the Lab experiments of Containerisation and DevOps.
 
 ## Theory 
-- [25.02.26](./Theory/25.03.26/)
+- [Class Assignment - 25.02.26](./Theory/25.03.26/)
 ## Lab Experiments
 
 - [Experiment 0](./LAB/Experiment-0/README.md) 
