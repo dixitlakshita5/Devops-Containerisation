@@ -22,5 +22,7 @@ This repository consists of all the Lab experiments of Containerisation and DevO
     - In this experiment, Docker was used to containerize Flask and Node.js applications using Dockerfiles. Docker images were built, tagged, and published to Docker Hub to demonstrate image distribution. The experiment also demonstrated multi-stage builds, container execution, and port mapping to understand Docker deployment workflow.
 - [Experiment 5](./LAB/Experiment-5/README.md)
     - To study Docker volumes for persistent storage, environment variables for container configuration, monitoring tools for container performance and Docker networks for communication between containers.
+- [Experiment 6](./LAB/Experiment-6/READme.md)
+    - To deploy a multi-container application using Docker Compose consisting of a WordPress container and a MySQL database container. The experiment also aims to understand Docker networking, persistent volumes, service scaling, and deployment using Docker Swarm.
 - [project-1](https://dixitlakshita5.github.io/Devops-Containerisation/project-1/)
     - This project is a containerized web application built using Node.js and PostgreSQL, where both services run in separate Docker containers. Docker Compose is used to manage and connect these containers, while a Docker volume ensures persistent database storage. The backend API allows inserting and retrieving data through HTTP endpoints.
