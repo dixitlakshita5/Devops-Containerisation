@@ -1,3 +1,56 @@
+### Name : LAKSHITA DIXIT
+### SAP ID : 500125823
+
+## EXPERIMENT 7 : CI/CD Pipeline Setup using GitHub, Docker, and Jenkins
+The objective of this project is to design and implement a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using GitHub, Docker, and Jenkins. This pipeline automates code integration, Docker image building, and pushing images to Docker Hub.
+
+## Objectives
+
+- Understand CI/CD workflow using Jenkins (GUI-based tool)  
+- Create a structured GitHub repository with application + Jenkinsfile  
+- Build Docker images from source code  
+- Securely store Docker Hub credentials in Jenkins  
+- Automate build & push process using webhook triggers  
+- Use same host (Docker) as Jenkins agent  
+
+## Theory
+
+### What is Jenkins?
+Jenkins is a web-based GUI automation server used to:
+- Build applications  
+- Test code  
+- Deploy software  
+
+It provides:
+- Dashboard (browser-based UI)  
+- Plugin ecosystem (GitHub, Docker, etc.)  
+- Pipeline as Code using Jenkinsfile  
+
+---
+
+### What is CI/CD?
+
+**Continuous Integration (CI):**
+- Code is automatically built and tested after each commit  
+
+**Continuous Deployment (CD):**
+- Built artifacts (Docker images) are automatically delivered/deployed  
+
+---
+
+### Workflow Overview
+Developer → GitHub → Webhook → Jenkins → Build → Docker Hub  
+
+---
+
+### Prerequisites
+- Docker & Docker Compose installed  
+- GitHub account  
+- Docker Hub account  
+- Basic Linux command knowledge  
+
+
+
 ### STEP 1: Create docker compose file
 
 ![dockercomposefile](./images/docker-composeJenkinsfile.png)
@@ -16,19 +69,15 @@
 - Optional : To access your Jenkins from another device you need to make it public hence you can get a public ip from npm local tunnel and Configure your Jenkins.
 ![configure](./images/externalaccess.png)
 
-
-# CI/CD Pipeline Setup using GitHub, Docker, and Jenkins
-
-## Objective
-The objective of this project is to design and implement a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using GitHub, Docker, and Jenkins. This pipeline automates code integration, Docker image building, and pushing images to Docker Hub.
-
 ---
 
 ## Part A: GitHub Repository Setup (Source Code + Build Definition)
 
 ### 5.1 Create Repository
-Create a repository on GitHub named:
-my-app
+Create a repository on GitHub named and clone it in your system by pasting its url on your terminal :
+_my-app_
+
+![gitmyapp](./lab7images/1.1.png)
 
 ---
 
@@ -38,12 +87,15 @@ my-app/
 ├── requirements.txt
 ├── Dockerfile
 ├── Jenkinsfile
+ ![repostructure](./lab7images/1.2.png)
+
 
 ---
 
 ### 5.3 Application Code
 
 #### app.py
+```python
 from flask import Flask
 app = Flask(__name__)
 
@@ -53,17 +105,21 @@ def home():
     # return "Hello from CI/CD Pipeline!, my sapid is 123456"
 
 app.run(host="0.0.0.0", port=80)
+```
+
+![2](./lab7images/2.png)
 
 ---
 
 #### requirements.txt
-flask
+```flask```
 
 ---
 
 ### 5.4 Dockerfile (Build Process)
 
 #### Dockerfile
+```dockerfile
 FROM python:3.10-slim
 
 WORKDIR /app
@@ -73,7 +129,7 @@ RUN pip install -r requirements.txt
 
 EXPOSE 80
 CMD ["python", "app.py"]
-
+```
 ---
 
 ### Build Process Explanation
@@ -88,7 +144,7 @@ CMD ["python", "app.py"]
 ---
 
 ### 5.5 Jenkinsfile (Pipeline Definition)
-
+```bash
 pipeline {
     agent any
 
@@ -125,7 +181,48 @@ pipeline {
         }
     }
 }
+```
 
+## Refer to this example to know where to make chaneges
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "lakshitadixit5/myapp"
+    }
+
+    stages {
+
+        stage('Clone Source') {
+            steps {
+                git branch: 'main', url: 'https://github.com/dixitlakshita5/my-app.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME:latest .'
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
+                    sh 'echo $DOCKER_TOKEN | docker login -u lakshitadixit5 --password-stdin'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                sh 'docker push $IMAGE_NAME:latest'
+            }
+        }
+    }
+}
+```
 ---
 
 ## Part B: Jenkins Setup using Docker (Persistent Configuration)
