@@ -210,7 +210,7 @@ pipeline {
 ### STEP 1: Create docker compose file
 
 ![dockercomposefile](./images/docker-composeJenkinsfile.png)
-
+```
 version: '3.8'
 
 services:
@@ -228,6 +228,7 @@ services:
 
 volumes:
   jenkins_home:
+```
 
 ### STEP 2: Start Jenkins
 
