@@ -51,26 +51,6 @@ Developer → GitHub → Webhook → Jenkins → Build → Docker Hub
 
 
 
-### STEP 1: Create docker compose file
-
-![dockercomposefile](./images/docker-composeJenkinsfile.png)
-
-### STEP 2: Start Jenkins
-
-- Access local host 
-
-![access host](./images/localhost.png)
-
-### STEP 3 : Unlock Jenkins 
-
-- docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-- Install all required plugins 
-![unlock](./images/Unlock%20Jenkins.png)
-- Optional : To access your Jenkins from another device you need to make it public hence you can get a public ip from npm local tunnel and Configure your Jenkins.
-![configure](./images/externalaccess.png)
-
----
-
 ## Part A: GitHub Repository Setup (Source Code + Build Definition)
 
 ### 5.1 Create Repository
@@ -227,7 +207,9 @@ pipeline {
 
 ## Part B: Jenkins Setup using Docker (Persistent Configuration)
 
-### 6.1 Create Docker Compose File
+### STEP 1: Create docker compose file
+
+![dockercomposefile](./images/docker-composeJenkinsfile.png)
 
 version: '3.8'
 
@@ -247,28 +229,45 @@ services:
 volumes:
   jenkins_home:
 
----
+### STEP 2: Start Jenkins
 
-### 6.2 Start Jenkins
-docker-compose up -d
+- docker-compose up -d
 
-Access:
-http://localhost:8080
+- Access local host 
 
----
+![access host](./images/localhost.png)
 
-### 6.3 Unlock Jenkins
-docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+### STEP 3 : Unlock Jenkins 
 
----
+- docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+- Install all required plugins 
+![unlock](./images/Unlock%20Jenkins.png)
+- Optional : To access your Jenkins from another device you need to make it public hence you can get a public ip from npm local tunnel and Configure your Jenkins.
+![configure](./images/externalaccess.png)
 
-### 6.4 Initial Setup
+
+### STEP 4 : Initial Setup
 - Install suggested plugins
 - Create admin user
 
 ---
 
 ## Part C: Jenkins Configuration
+
+### Pre-requisite : Create Docker access token if you don't already have one
+
+1. Login to Docker hub
+2. Click on Profile -> Settings -> Personal Access tokens 
+3. Create Access token 
+4. Write something in the description of access token 
+5. Set permissions to read, write, delete (DO NOT SET THE PERMISSION TO "READ ONLY")
+6. Generate token 
+7. Your token is generated 
+
+![3](./lab7images/3.png)
+![4](./lab7images/4.png)
+
+
 
 ### 7.1 Add Docker Hub Credentials
 Path:
@@ -278,17 +277,27 @@ Type: Secret Text
 ID: dockerhub-token  
 Value: Docker Hub Access Token  
 
+![6](./lab7images/6.png)
+![7](./lab7images/7.png)
+
 ---
 
 ### 7.2 Create Pipeline Job
 New Item → Pipeline  
 Name: ci-cd-pipeline  
 
+![8](./lab7images/8.png)
+![9](./lab7images/9.png)
+
+
 Configure:
 - Pipeline script from SCM  
 - SCM: Git  
 - Repo URL: your GitHub repo  
 - Script Path: Jenkinsfile  
+
+![10](./lab7images/10.png)
+![11](./lab7images/11.png)
 
 ---
 
@@ -303,7 +312,16 @@ Configure:
 4. Final Output:
    Docker image ready for deployment anywhere
 
+![18](./lab7images/18.png)
+![17](./lab7images/17success.png)
+
 ---
+
+## Accessible through terminal on any device
+
+![19](./lab7images/19accessingthroughterminal.png)
+![20](./lab7images/20.png)
+  
 
 ## Observations
 - Automation reduces manual effort
@@ -314,11 +332,21 @@ Configure:
 ---
 
 ## Problems Faced
-- Docker permission issues inside Jenkins container
-- Docker Hub authentication errors
-- Incorrect credentials configuration
-- Port conflicts
-- Initial difficulty with Jenkins pipeline syntax
+- Error in repository branch of git hub
+  - Changed repostory from master to main
+  - ![12](./lab7images/12.png)
+  - ![14](./lab7images/13errorduetomaster.png)
+  - ![13](./lab7images/14.png)
+  - ![15](./lab7images/15errorfix.png)
+
+
+- Docker Hub authentication errors because the token generated was read only.
+  - Generated a new token with read, write, only permissions in the docker hub.
+
+- Incorrect credentials configuration as the credentials that were being generated were not gloabal.
+  - Generated credentials which were gloabl in jenkins.
+
+
 
 ---
 
