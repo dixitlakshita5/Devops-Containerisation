@@ -36,6 +36,8 @@ This repository consists of all the Lab experiments of Containerisation and DevO
 - [Experiment 11](./LAB/Experiment-11/ReadME.md)
     - Orchestration using Docker Compose and Docker Swarm (Continuation of Experiment 6)
 
+- [Experiment 12](./LAB/Experiment-12/Readme.md)
+    - The objective of this experiment is to understand container orchestration using Kubernetes by deploying an application using a Deployment and Service, and to learn how Kubernetes manages scaling and ensures application reliability through self-healing.
 
 - [project-1](https://dixitlakshita5.github.io/Devops-Containerisation/project-1/)
     - This project is a containerized web application built using Node.js and PostgreSQL, where both services run in separate Docker containers. Docker Compose is used to manage and connect these containers, while a Docker volume ensures persistent database storage. The backend API allows inserting and retrieving data through HTTP endpoints.
