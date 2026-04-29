@@ -1,3 +1,109 @@
+## Devops Containerisation 
+### Name : Lakshita Dixit 
+### SAP ID : 500125823
+
+# Experiment 9: Ansible
+
+## Objective
+
+- To understand the concept of configuration management and automation using Ansible  
+- To implement agentless automation across multiple servers using SSH  
+- To create and execute Ansible playbooks for performing configuration tasks  
+- To observe idempotency and scalability in real-world automation scenarios  
+
+---
+
+## Theory
+
+### Problem Statement
+
+Managing infrastructure manually across multiple servers leads to:
+- Configuration drift  
+- Inconsistent environments  
+- Time-consuming repetitive tasks  
+
+Scaling from one server to hundreds becomes extremely difficult with manual SSH-based administration.
+
+---
+
+## What is Ansible?
+
+Ansible is an open-source automation tool used for:
+- Configuration management  
+- Application deployment  
+- Orchestration  
+
+Key characteristics:
+- Agentless architecture (uses SSH for Linux, WinRM for Windows)  
+- YAML-based playbooks for defining automation  
+- Cross-platform automation at scale  
+
+Ansible has become a standard choice among enterprise automation solutions.
+
+---
+
+## How Ansible Solves the Problem
+
+- **Agentless Architecture**  
+  No software installation is required on managed nodes  
+
+- **Idempotency**  
+  Running playbooks multiple times produces the same result  
+
+- **Declarative Syntax**  
+  You define the desired state, not the step-by-step procedure  
+
+- **Push-based Model**  
+  Changes are initiated from the control node instantly  
+
+---
+
+## Key Concepts
+
+| Component       | Description |
+|----------------|------------|
+| Control Node   | Machine with Ansible installed |
+| Managed Nodes  | Target servers (no Ansible agent required) |
+| Inventory      | List of managed nodes (e.g., inventory.ini) |
+| Playbooks      | YAML files containing automation steps |
+| Tasks          | Individual actions in a playbook |
+| Modules        | Built-in functions (e.g., apt, yum, service) |
+| Roles          | Reusable automation components |
+
+---
+
+## How Ansible Works
+
+Ansible operates using:
+- A **control node** (where Ansible is installed)  
+- Multiple **managed nodes** (target systems)  
+
+Workflow:
+1. The control node connects to managed nodes via SSH  
+2. It sends commands using Ansible modules  
+3. Tasks are executed on managed nodes  
+4. A sequence of tasks forms a playbook  
+
+Key points:
+- Playbooks are written in YAML  
+- Inventory files define the target machines  
+- No agents are required on managed nodes  
+
+Ansible is simple to use:
+- Requires only a terminal and a text editor  
+- Easy to understand due to human-readable syntax  
+
+---
+
+## Benefits of Using Ansible
+
+- Free and open-source with strong community support  
+- Widely adopted and battle-tested in industry  
+- Easy to learn and use without advanced coding skills  
+- Agentless architecture simplifies deployment  
+- Supports modularity and reusability (roles)  
+- Extensive official documentation and community resources  
+
 # Step 1: Install Required Tools (Mac)
 
 Before anything, your Mac must have:
