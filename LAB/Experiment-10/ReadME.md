@@ -134,6 +134,7 @@ You will see a token like:
 sqp_xxxxxxxxxxxxx
 ```
 
+![b](./images/b.png)
 Save this token immediately. You will not be able to see it again.
 
 # Step 4: Create a Sample Project (To Scan)
