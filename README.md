@@ -30,6 +30,9 @@ This repository consists of all the Lab experiments of Containerisation and DevO
 - [Experiment 9](./LAB/Experiment-9/Readme.md)
     - The objective of this experiment is to understand how Ansible automates server configuration and management using playbooks. It demonstrates how multiple servers can be configured consistently and efficiently without manual intervention. The experiment also highlights key concepts like agentless automation, SSH-based communication, and idempotent operations. 
 
+- [Experiment 10](./LAB/Experiment-10/ReadME.md)
+    - The objective of this experiment is to analyze source code quality using SonarQube. It helps identify bugs, code smells, and maintainability issues, and enforces quality gates before deployment in a CI/CD pipeline.
+
 - [Experiment 11](./LAB/Experiment-11/ReadME.md)
     - Orchestration using Docker Compose and Docker Swarm (Continuation of Experiment 6)
 
