@@ -72,7 +72,7 @@ docker run -d --name sonarqube \
 -p 9000:9000 \
 sonarqube:lts-community
 ```
-[1](./images/1.png)
+![1](./images/1.png)
 ---
 
 ## What This Does
@@ -89,7 +89,7 @@ Now that the container is running, open the following URL in your browser:
 ```
 http://localhost:9000
 ```
-[2](./images/2.png)
+![2](./images/2.png)
 
 # Step 3: Login to SonarQube
 
