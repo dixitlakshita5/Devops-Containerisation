@@ -23,7 +23,7 @@ Command:
 ```
 docker compose up --scale wordpress=3
 ```
-![7](./LAB/Experiment-6/images/7.png)
+![7](./Experiment-6/images/7.png)
 Observation:
 
 Error due to fixed container name.
