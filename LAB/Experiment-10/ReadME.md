@@ -124,7 +124,7 @@ Under **Generate Tokens**:
 - Click **Generate**  
 - User token
 
-![4](./images/4.png)
+![a](./images/a.png)
 ---
 
 ## Important
