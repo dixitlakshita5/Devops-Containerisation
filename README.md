@@ -28,8 +28,11 @@ This repository consists of all the Lab experiments of Containerisation and DevO
     - The objective of this project is to design and implement a complete CI/CD (Continuous Integration and Continuous Deployment) pipeline using GitHub, Docker, and Jenkins. This pipeline automates code integration, Docker image building, and pushing images to Docker Hub.
 
 - [Experiment 9](./LAB/Experiment-9/Readme.md)
+    - The objective of this experiment is to understand how Ansible automates server configuration and management using playbooks. It demonstrates how multiple servers can be configured consistently and efficiently without manual intervention. The experiment also highlights key concepts like agentless automation, SSH-based communication, and idempotent operations. 
 
 - [Experiment 11](./LAB/Experiment-11/ReadME.md)
+    - Orchestration using Docker Compose and Docker Swarm (Continuation of Experiment 6)
+
 
 - [project-1](https://dixitlakshita5.github.io/Devops-Containerisation/project-1/)
     - This project is a containerized web application built using Node.js and PostgreSQL, where both services run in separate Docker containers. Docker Compose is used to manage and connect these containers, while a Docker volume ensures persistent database storage. The backend API allows inserting and retrieving data through HTTP endpoints.
